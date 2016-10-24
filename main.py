@@ -1,6 +1,4 @@
-import re
-import requests
-import json
+import requests, json, os
 from flask import Flask, render_template, make_response, jsonify
 
 app = Flask(__name__)
@@ -29,4 +27,7 @@ def tweets():
 	return tweets
 
 if __name__ == "__main__":
-	app.run()
+    if 'PORT' in os.environ:
+        app.run(host='0.0.0.0', port=int(os.environ['PORT']))
+    else:
+        app.run()

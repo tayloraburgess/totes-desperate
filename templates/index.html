@@ -22,15 +22,10 @@
           contentType: 'application/json;charset=utf-8',
           success: (resp) => {
             $('#number').empty();
-            console.log(resp);
-            window.respString = resp;
             const data = JSON.parse(resp);
             $('#number').append('<h4>here\'s a random number. it\'s from twitter.<h4><h5>(1000% cryptographically valid.)</h5><h2>' + data.value + '</h2>');
             addTweets(data['tweet ids']);
           },
-          error: (obj, textStatus, errorThrown) => {
-            console.log(textStatus, errorThrown);
-          }
         });
       }
       function generate() {
